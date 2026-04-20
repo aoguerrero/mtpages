@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse ( "${current_path}/head_pastejs.vm" )
+<body class="edit">
+    <form autocomplete="off" action="/pages/$id/save" method="post">
+        <p>Title<br />
+            <input type="text" name="title" size="80" value="$title" required>
+        </p>
+        <p>Content<br />
+            <textarea name="content" id="content" spellcheck="false" required>$content</textarea>
+        </p>
+        <p>Tags<br />
+            <input type="text" name="tags" size="80" value="$tags" required>
+        </p>
+        <p>Identifier<br />
+            <input type="text" name="identifier" size="80" value="$identifier" required>
+        </p>
+        <p>
+            <input type="checkbox" name="public" #if ($public)checked#end value="true">
+            <label for="public">Public</label>
+        </p>
+        <p>
+            <input class="btn" type="submit" value="Save">
+            <a class="btn" href="/pages/${id}/view">Cancel</a>
+        </p>
+    </form>
+</body>
+</html>

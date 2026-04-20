@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse ( "${current_path}/head_tag.vm" )
+<body>
+    #if ($auth)<a class="tag-btn" href="/pages/list/">all</a>#end
+    #foreach ($tag in $tags)
+    <a class="tag-btn" href="/pages/list/$tag">$tag</a>
+    #end
+    $content
+</body>
+</html>

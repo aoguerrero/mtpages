@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse ( "${current_path}/head_tag.vm" )
+<body>
+    #set ( $d = "$")
+    <a class="tag-btn" href="/">home</a>
+    #if ($auth)
+    <a class="tag-btn" href="/pages/new/$selected_tags_str">new page</a>
+    <a class="tag-btn" href="/logout">logout</a>
+    #end
+    #foreach ($selected_tag in $selected_tags)
+    <a class="tag-btn-a"
+        href="/pages/list/${template_util.removeTagFromList($selected_tags_str, $selected_tag)}">$selected_tag</a>
+    #end
+    #foreach ($tag in $tags)
+    <a class="tag-btn" href="/pages/list/${selected_tags_str}#if (!$selected_tags.isEmpty())$d#end${tag}">$tag</a>
+    #end
+    <p>
+   </p>
+    #foreach ($item in $items)
+    <p class="item"><a class="item" href="/pages/$item.id()/view">$item.title()</a>
+        #foreach ($tag in $item.tags())
+        <span class="tag">$tag</span>
+        #end
+        #if(!$item.pblic())
+        <span class="private">private</span>
+        #end
+    </p>
+    #end
+    #if (!$filtered && !$auth)
+    <p>Select a category from the top.</p>
+    #end
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse ( "${current_path}/head_pastejs.vm" )
+<body>
+    <form autocomplete="off" action="/pages/save" method="post">
+        <p>Title<br />
+            <input type="text" name="title" size="80" required>
+        </p>
+        <p>Content<br />
+            <textarea name="content" cols="80" rows="25" spellcheck="false" required></textarea>
+        </p>
+        <p>Tags<br />
+            <input type="text" name="tags" size="80" value="$selected_tags_str_sp" required>
+        </p>
+        <p>
+            <input type="checkbox" name="public" value="true">
+            <label for="public">Public</label>
+        </p>
+        <p>
+            <input class="btn" type="submit" value="Save">
+            <a class="btn" href="/pages/list/$selected_tags_str">Cancel</a>
+        </p>
+    </form>
+</body>
+</html>
